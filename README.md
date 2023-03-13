@@ -1,8 +1,10 @@
 # Reality-phishing
-simple google phising page wich sends logs to Discord hebhook
+simple google phising page wich sends logs to Discord hebhook coded in php, js, html
 
 # Screenshots
 
+<img src="Images/rapport.JPG" width="400px">
+<img src="Images/login.JPG" width="400px">
 
 # Instalation
 1. Open https://replit.com/ 
